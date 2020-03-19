@@ -1,0 +1,22 @@
+---
+# defaults file for firewall
+
+fw_provider: {}
+applications: []
+panos_username: "user"
+panos_password: "changeme"
+survey: False
+both: False
+
+fw_rule_name: rulename
+fw_rule_description: "rule description"
+fw_rule_src_zone: "inside"
+fw_rule_dest_zone: "outside"
+fw_rule_src_ip: "127.0.0.1"
+fw_rule_src_hostname: "name1"
+fw_rule_dest_ip: "127.0.0.1"
+fw_rule_dest_hostname: "name2"
+fw_rule_service: service-https
+fw_rule_tag: tag
+fw_rule_action: allow
+fw_rule_state: present

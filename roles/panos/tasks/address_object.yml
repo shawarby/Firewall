@@ -1,0 +1,22 @@
+---
+
+- name: provider
+  debug:
+    msg: "{{ __backup_manager_provider }}"
+  tags: debug
+
+- name: "create src object {{ fw_rule_src_hostname }}"
+  panos_address_object:
+    provider: "{{ __backup_manager_provider }}"
+    name: "{{ fw_rule_src_hostname }}"
+    value: "{{ fw_rule_src_ip }}/32"
+    commit: "False"
+  notify: commit
+
+- name: "create dest object {{ fw_rule_dest_hostname }}"
+  panos_address_object:
+    provider: "{{ __backup_manager_provider }}"
+    name: "{{ fw_rule_dest_hostname }}"
+    value: "{{ fw_rule_dest_ip }}/32"
+    commit: "False"
+  notify: commit

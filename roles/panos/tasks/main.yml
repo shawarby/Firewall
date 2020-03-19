@@ -1,0 +1,24 @@
+---
+# tasks file for firewall panos
+
+- name: skip panos if inside servers only
+  meta: end_play
+  when: both and (src_zone == 'inside' and dest_zone == 'outside') or (dest_zone == 'inside' and src_zone == 'outside')
+
+- name: set fw provider
+  set_fact: 
+   __backup_manager_provider: "{{ __backup_manager_provider | 
+        combine( { 'username': panos_username, 
+        'password': panos_password, 'ip_address': ansible_host }) }}"
+
+- include_tasks: application_mapping.yml
+  when: survey
+
+- include_vars: policy.yml
+  when: survey
+
+- name: include address object
+  include_tasks: address_object.yml
+
+- name: include rules
+  include_tasks: rule.yml

@@ -1,0 +1,17 @@
+---
+# vars file for firewall
+
+__backup_manager_provider:
+    ip_address: "{{ ansible_host | default(inventory_hostname) }}"
+    username: "{{ lookup('ENV', 'PANOS_USERNAME') | default(omit) }}"
+    password: "{{ lookup('ENV', 'PANOS_PASSWORD') | default(omit) }}"
+#    api_key: "{{ lookup('ENV', 'PANOS_API_KEY') | default(omit) }}"
+#    port: "{{ lookup('ENV', 'PANOS_PORT') | default(omit) }}"
+#    serial_number: "{{ lookup('ENV', 'PANOS_SERIAL_NUMBER') | default(omit) }}"
+
+__appmatch:
+  http: service-http
+  https: service-https
+  dns-udp: service-dns-udp
+  dns-tcp: service-dns-tcp
+  rpc: active-directory

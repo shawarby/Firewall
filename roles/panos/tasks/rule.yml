@@ -1,0 +1,19 @@
+---
+
+- name: add rule to firewall
+  panos_security_rule:
+    provider: "{{ __backup_manager_provider }}"
+    rule_name: "{{ fw_rule_name }}"
+    description: "{{ fw_rule_description }}"
+    source_zone: ["{{ fw_rule_src_zone }}"]
+    destination_zone: ["{{ fw_rule_dest_zone }}"]
+    source_ip: ["{{ fw_rule_src_hostname }}"]
+    source_user: ['any']
+    destination_ip: ["{{ fw_rule_dest_hostname }}"]
+    category: ['any']
+    application: ['any']
+    service: "{{ fw_rule_service }}"
+    hip_profiles: ['any']
+    action: "{{ fw_rule_action }}"
+    commit: 'False'
+  notify: commit
