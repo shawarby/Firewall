@@ -1,0 +1,8 @@
+---
+
+- name: Juniper Firewall Play
+  hosts: junos
+  connection: netconf
+  gather_facts: False
+  roles:
+    - junosfw
