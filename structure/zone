@@ -1,0 +1,19 @@
+[zones]
+serverA
+serverB
+
+[inside]
+serverA 
+
+[zone:vars]
+fw_rule_src_zone: inside
+
+[outside]
+serverB
+
+[serverA:vars]
+fw_rule_destinations:
+  - name: serverAB
+    zone: outside
+    ip_address: 3.4.5.5
+    action: 
