@@ -1,0 +1,18 @@
+---
+dependencies:
+  - juniper.junos
+
+galaxy_info:
+  author: maxrainer 
+  description: Juniper SRX Firewall
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.4
+  platforms:
+  - name: junos
+    versions: ALL
+  galaxy_tags:
+    - network
+    - firewall
+    - juniper
+
+
