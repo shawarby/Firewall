@@ -1,0 +1,10 @@
+security_zones:
+  - name: "{{ 'outside' if src_zone == 'dmz' else src_zone}}"
+    address_books:
+      - name: "{{ src_hostname }}"
+        ipv4: "{{ src_ip_address }}/32"
+
+  - name: "{{ 'outside' if dest_zone == 'dmz' else dest_zone }}"
+    address_books:
+      - name: "{{ dest_hostname }}"
+        ipv4: "{{ dest_ip_address }}/32"
