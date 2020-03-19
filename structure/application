@@ -1,0 +1,13 @@
+[all]
+serverA 
+serverB
+serverC
+
+[https]
+serverC 
+
+[http]
+serverA
+
+
+
