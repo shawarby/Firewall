@@ -1,0 +1,31 @@
+---
+
+- name: skip junos play if dmz only
+  meta: end_play
+  when: (src_zone == 'dmz' and dest_zone == 'outside') or (dest_zone == 'dmz' and src_zone == 'outside')
+
+- include_tasks: application_mapping.yml
+  when: survey and both
+
+- include_vars: 
+    file: security_policy.yml
+  when: survey
+
+- include_vars: 
+    file: security_zones.yml
+  when: survey
+
+- name: debug security policy
+  debug: 
+     msg: "{{ security_policy }}"
+  tags: debug
+
+- name: debug security zones
+  debug: 
+     msg: "{{ security_zones }}"
+  tags: debug
+
+- include_tasks: security_zones.yml
+
+- include_tasks: security_policy.yml
+  
